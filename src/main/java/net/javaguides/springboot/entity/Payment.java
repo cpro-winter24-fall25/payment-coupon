@@ -1,35 +1,34 @@
-package net.javaguides.springboot.entity;
-import java.util.Date;
+package net.javaguides.springboot.entity;  // This is where the Payment class is located
 
-import jakarta.persistence.*;
+import java.util.Date;  // Import the Date class to handle dates
+import jakarta.persistence.*;  // Import stuff for saving data in the database
 
-@Entity
-@Table(name = "payments")
-
+@Entity  // Marks this class as an entity that we can save to a database
+@Table(name = "payments")  // Links this class to the "payments" table in the database
 public class Payment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id  // Tells the database that this is the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Automatically generates a unique ID for each payment
     private Long id;
 
-    @Column(nullable = false)
-    private String paymentMethod;
+    @Column(nullable = false)  // Ensures this field can't be empty in the database
+    private String paymentMethod;  // The method used for payment (like Credit Card, PayPal, etc.)
 
-    @Column(nullable = false)
-    private double amountPaid;
+    @Column(nullable = false)  // Ensures this field can't be empty in the database
+    private double amountPaid;  // The total amount that was paid
 
-    @Temporal(TemporalType.DATE)  // Ensures only the date is stored
-    @Column(nullable = false)
-    private Date paymentDate;
+    @Temporal(TemporalType.DATE)  // Only stores the date (not the time)
+    @Column(nullable = false)  // Ensures this field can't be empty in the database
+    private Date paymentDate;  // The date when the payment was made
 
-    @Column(nullable = false)
-    private double taxAmount;
+    @Column(nullable = false)  // Ensures this field can't be empty in the database
+    private double taxAmount;  // The tax added to the payment
 
-    // No-argument constructor
+    // No-argument constructor (needed for JPA to work properly)
     public Payment() {
     }
 
-    // All-argument constructor
+    // Constructor to set all the fields when creating a new Payment
     public Payment(Long id, String paymentMethod, double amountPaid, Date paymentDate, double taxAmount) {
         this.id = id;
         this.paymentMethod = paymentMethod;
@@ -38,7 +37,8 @@ public class Payment {
         this.taxAmount = taxAmount;
     }
 
-    // Getters and Setters
+    // Getters and Setters to access and update the fields
+
     public Long getId() {
         return id;
     }
