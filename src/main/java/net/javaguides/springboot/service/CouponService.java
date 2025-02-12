@@ -14,7 +14,7 @@ public interface CouponService {
     // Get all coupons
     List<Coupon> getAllCoupons();
 
-    // Update an existing coupon
+    // Update existing coupon
     Coupon updateCoupon(Coupon coupon);
 
     // Delete a coupon by its ID
